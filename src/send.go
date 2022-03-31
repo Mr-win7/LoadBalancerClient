@@ -7,6 +7,7 @@ import (
 )
 
 var retryTimes = 3
+var sendGoroutineNum = 5
 
 func sendRequest(url string) error {
 	currentRetryTimes := retryTimes
@@ -30,7 +31,7 @@ func sendRequest(url string) error {
 // SendStep Send the request to assigned backend.
 // start several goroutines to control number of connections.
 func SendStep(backendChannel <-chan Route, requestChannel chan<- int) {
-	for i := 0; i < 5; i++ {
+	for i := 0; i < sendGoroutineNum; i++ {
 		go func() {
 			for route := range backendChannel {
 				backend := route.Backend
