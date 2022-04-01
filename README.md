@@ -13,6 +13,7 @@ A Client for querying ebay's backend, with failure tolerate and round-robin load
 - [Install](#install)
 - [Usage](#usage)
 - [Maintainers](#maintainers)
+- [Design](#design)
 
 ## Background
 
@@ -28,6 +29,10 @@ clone the repository.
 ```sh
 $ ./bin/load_balancer
 ```
+
+## Design
+
+![LoadBalancerDesign.drawio.png](https://s2.loli.net/2022/04/02/dPl3eQNTjOg6oJU.png)
 
 ## Maintainers
 

@@ -19,7 +19,9 @@ func sendRequest(url string) error {
 		if err == nil && (resp.StatusCode >= 200 && resp.StatusCode <= 500) {
 			return nil
 		}
-		WARNING.Println(err.Error())
+		if err != nil {
+			WARNING.Println(err.Error())
+		}
 
 		timeout := (retryTimes-currentRetryTimes)*2 + 1
 		time.Sleep(time.Duration(timeout))

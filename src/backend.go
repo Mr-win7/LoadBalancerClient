@@ -30,11 +30,12 @@ func (backend *Backend) SetIsAlive(isAlive bool) {
 	backend.mutex.Unlock()
 }
 
-var backendList []Backend
+var backendList []Backend = make([]Backend, 0)
 
 // ParseDigResponse Get backend list from dig output.
 // Only preserve A records.
 func ParseDigResponse(response string) {
+  backendList = make([]Backend, 0)
 	scanner := bufio.NewScanner(strings.NewReader(response))
 	pattern, _ := regexp.Compile(`\s+`)
 	for scanner.Scan() {
